@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import './Application.scss';
 import { icons } from './Icons';
+
+
+import(/* webpackChunkName: 'mychunk', webpackPrefetch: true */ './Demo')
+
+const Demo = React.lazy(() => import(/* webpackChunkName: 'mychunk', webpackPreload: true*/ './Demo'));
 
 const Application: React.FC = () => {
   const [counter, setCounter] = useState(0);
@@ -115,6 +120,10 @@ const Application: React.FC = () => {
           </button>
         </div>
       </div>
+
+      <Suspense fallback={null}>
+        <Demo />
+      </Suspense>
     </div>
   );
 };

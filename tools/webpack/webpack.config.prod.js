@@ -17,7 +17,7 @@ module.exports = {
       ...require('./webpack.aliases'),
     },
   },
-  stats: 'errors-warnings',
+  stats: 'normal',
   optimization: {
     minimize: true,
     sideEffects: true,
